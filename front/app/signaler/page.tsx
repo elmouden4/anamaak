@@ -16,6 +16,7 @@ import { CheckCircle, Upload, MapPin, FileText, Camera, Award } from "lucide-rea
 import { useSignalements } from "@/contexts/SignalementContext"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { LeafletMap } from "@/components/LeafletMap"
 
 const TYPES_INCIDENTS = [
   "Propreté et déchets (dépôts sauvages, égouts, odeurs)",
@@ -47,6 +48,8 @@ export default function SignalerPage() {
   })
   const [codeGenere, setCodeGenere] = useState("")
   const [showSuccess, setShowSuccess] = useState(false)
+  const [selectedPosition, setSelectedPosition] = useState<{ lat: number; lng: number } | null>(null)
+  const [showMap, setShowMap] = useState(false)
 
   const { ajouterSignalement } = useSignalements()
   const router = useRouter()
@@ -198,28 +201,30 @@ export default function SignalerPage() {
 
             <div>
               <Label>Localisation sur la carte</Label>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center bg-gray-50">
-                <MapPin className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-                <div className="space-y-2">
-                  <p className="text-sm font-medium text-gray-700">
-                    Cliquez sur la carte pour sélectionner l'emplacement
+              <div className="border rounded-lg overflow-hidden">
+                <div className="p-4 bg-gray-50 border-b">
+                  <p className="text-sm font-medium text-gray-700 mb-2">
+                    Cliquez sur la carte pour sélectionner l'emplacement exact
                   </p>
-                  <p className="text-xs text-gray-500">
-                    Fonctionnalité de carte interactive à venir - Pour l'instant, utilisez l'adresse ci-dessus
-                  </p>
+                  {selectedPosition && (
+                    <p className="text-xs text-green-600">
+                      Position sélectionnée: {selectedPosition.lat.toFixed(6)}, {selectedPosition.lng.toFixed(6)}
+                    </p>
+                  )}
+                  <Button variant="outline" size="sm" className="mt-2" onClick={() => setShowMap(!showMap)}>
+                    <MapPin className="h-4 w-4 mr-2" />
+                    {showMap ? "Masquer la carte" : "Afficher la carte"}
+                  </Button>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="mt-3"
-                  onClick={() => {
-                    // Placeholder pour l'ouverture de la carte
-                    alert("Carte interactive à venir dans une prochaine version")
-                  }}
-                >
-                  <MapPin className="h-4 w-4 mr-2" />
-                  Ouvrir la carte
-                </Button>
+
+                {showMap && (
+                  <div className="h-64 w-full">
+                    <LeafletMap
+                      onLocationSelect={(lat, lng) => setSelectedPosition({ lat, lng })}
+                      selectedPosition={selectedPosition}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
