@@ -46,7 +46,7 @@ export default function HomePage() {
       titre: "Voirie",
       description: "Trous dans la chaussée, nids de poule",
       icon: "🛣️",
-      image: "/placeholder.svg?height=200&width=300&text=Trou+dans+chaussée",
+      image: "/1.png",
       couleur: "from-marrakech-red to-marrakech-orange",
       exemples: ["Trous dans la chaussée", "Fissures", "Revêtement dégradé"],
     },
@@ -54,7 +54,7 @@ export default function HomePage() {
       titre: "Éclairage public",
       description: "Lampadaires défectueux ou éteints",
       icon: "💡",
-      image: "/placeholder.svg?height=200&width=300&text=Lampadaire+cassé",
+      image: "/2.jpg",
       couleur: "from-marrakech-gold to-marrakech-sunset",
       exemples: ["Lampadaires cassés", "Éclairage insuffisant", "Pannes électriques"],
     },
@@ -62,7 +62,7 @@ export default function HomePage() {
       titre: "Propreté",
       description: "Déchets non ramassés, dépôts sauvages",
       icon: "🗑️",
-      image: "/placeholder.svg?height=200&width=300&text=Déchets+non+ramassés",
+      image: "/3.jpg",
       couleur: "from-marrakech-green to-marrakech-blue",
       exemples: ["Déchets non ramassés", "Dépôts sauvages", "Conteneurs pleins"],
     },
@@ -70,7 +70,7 @@ export default function HomePage() {
       titre: "Espaces verts",
       description: "Dégradations, arrosage défaillant",
       icon: "🌳",
-      image: "/placeholder.svg?height=200&width=300&text=Jardin+dégradé",
+      image: "/4.jpg",
       couleur: "from-marrakech-blue to-marrakech-green",
       exemples: ["Arbres malades", "Pelouses dégradées", "Arrosage défaillant"],
     },
@@ -78,7 +78,7 @@ export default function HomePage() {
       titre: "Nuisance à la tranquillité publique",
       description: "Signaler tout comportement ou situation troublant l'ordre, la sécurité ou le cadre de vie",
       icon: "🔍",
-      image: "/placeholder.svg?height=200&width=300&text=Nuisance+publique",
+      image: "/5.webp",
       couleur: "from-marrakech-sunset to-marrakech-red",
       exemples: [
         "Attroupements suspects ou bruyants",
@@ -93,7 +93,7 @@ export default function HomePage() {
       titre: "Autres problèmes",
       description: "Nuisances diverses, dégradations urbaines",
       icon: "⚠️",
-      image: "/placeholder.svg?height=200&width=300&text=Mobilier+cassé",
+      image: "/6.webp",
       couleur: "from-marrakech-terracotta to-marrakech-sand",
       exemples: ["Mobilier cassé", "Graffiti", "Signalisation manquante"],
     },
@@ -303,16 +303,16 @@ export default function HomePage() {
                 {/* Image principale */}
                 <div className="relative z-10 p-1">
                   <img
-                    src="/placeholder.svg?height=4226&width=3381&text=Marrakech+Cityscape"
+                    src="/kech.jpg"
                     alt="Vue de Marrakech - Amélioration urbaine"
                     className="w-full h-auto max-h-[600px] object-cover rounded-xl"
                   />
                 </div>
 
-                {/* Overlay avec informations */}
+                {/* Overlay avec informations et galerie */}
                 <div className="absolute bottom-4 left-4 right-4 z-20">
                   <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-marrakech-gradient rounded-full flex items-center justify-center">
                         <MapPin className="h-6 w-6 text-white" />
                       </div>
@@ -321,6 +321,54 @@ export default function HomePage() {
                         <p className="text-sm text-gray-600">Ensemble pour une ville meilleure</p>
                       </div>
                     </div>
+                    
+                    {/* Galerie de photos */}
+                    <div className="grid grid-cols-4 gap-2">
+                      <div className="relative group cursor-pointer">
+                        <img
+                          src="/kech10.jpg"
+                          alt="Amélioration urbaine - Avant"
+                          className="w-full h-16 object-cover rounded-md group-hover:opacity-80 transition-opacity"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 rounded-md transition-colors flex items-center justify-center">
+                          <span className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">Avant</span>
+                        </div>
+                      </div>
+                      <div className="relative group cursor-pointer">
+                        <img
+                          src="/kech2.jpg"
+                          alt="Amélioration urbaine - Après"
+                          className="w-full h-16 object-cover rounded-md group-hover:opacity-80 transition-opacity"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 rounded-md transition-colors flex items-center justify-center">
+                          <span className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">Après</span>
+                        </div>
+                      </div>
+                      <div className="relative group cursor-pointer">
+                        <img
+                          src="/kech20.png"
+                          alt="Travaux en cours"
+                          className="w-full h-16 object-cover rounded-md group-hover:opacity-80 transition-opacity"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 rounded-md transition-colors flex items-center justify-center">
+                          <span className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">Travaux</span>
+                        </div>
+                      </div>
+                      <div className="relative group cursor-pointer">
+                        <img
+                          src="/kech4.webp"
+                          alt="Voir plus de photos"
+                          className="w-full h-16 object-cover rounded-md group-hover:opacity-80 transition-opacity"
+                        />
+                        <div className="absolute inset-0 bg-marrakech-red/80 rounded-md transition-colors flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">+5</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <p className="text-xs text-gray-500 mt-2 text-center">
+                      📸 Découvrez les améliorations récentes dans votre ville
+                    </p>
                   </div>
                 </div>
               </div>
@@ -375,6 +423,8 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+
 
         {/* Fonctionnement en 3 étapes */}
         <section className="mb-16">
